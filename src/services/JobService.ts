@@ -3,8 +3,12 @@ import { get } from "./serviceBase";
 
 const BASE_URL = "https://jobsearch.api.jobtechdev.se";
 
-export const getJobs = async (limit: number = 10) => {
-    const url = `${BASE_URL}/search?limit=${limit}`;
+export const getJobs = async (searchText?: string, limit: number = 10) => {
+    let url = `${BASE_URL}/search?limit=${limit}`;
+
+    if (searchText && searchText.trim() !== "") {
+        url += `&q=${encodeURIComponent(searchText)}`;
+    }
 
     const data = await get<IJobSearchRes>(url);
     return data.hits;
