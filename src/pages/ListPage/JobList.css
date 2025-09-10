@@ -1,0 +1,27 @@
+.job-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  list-style: none;
+}
+.job-list a {
+  color: var(--digi--amber-700);
+}
+
+.job-list a:hover {
+  color: var(--digi--amber-200);
+}
+.page-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.item-img img {
+  width: 100px;
+  display: block;
+  margin: 0 auto;
+}
+
+:root {
+  --digi--amber-200: #ffdd93;
+}
