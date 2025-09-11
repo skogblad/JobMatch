@@ -1,5 +1,5 @@
-import { TypographyVariation } from "@digi/arbetsformedlingen"
-import { DigiLayoutContainer, DigiTypography } from "@digi/arbetsformedlingen-react"
+import { LayoutBlockVariation, TypographyVariation } from "@digi/arbetsformedlingen"
+import { DigiLayoutBlock, DigiLayoutContainer, DigiTypography } from "@digi/arbetsformedlingen-react"
 import "./Home.css"
 import { useEffect, useState } from "react";
 import type { IJob } from "../../models/IJob";
@@ -32,14 +32,16 @@ export const Home = () => {
   return (
     <> 
       <div className="home-page">
-        <DigiLayoutContainer afVerticalPadding style={{ width: "100%", maxWidth: "700px", background: "beige" }}>
-          <DigiTypography afVariation={TypographyVariation.LARGE}>
-            <h2>Jobbannonser</h2>
-            <p>Hitta ditt nya drömjobb</p>
-          </DigiTypography>
+        <DigiLayoutBlock afVariation={LayoutBlockVariation.PRIMARY} className="home-block">
+            <DigiLayoutContainer afVerticalPadding>
+                <DigiTypography afVariation={TypographyVariation.SMALL}>
+                    <h1>JobMatch</h1>
+                    <h2>Hitta ditt nya drömjobb</h2>
+                </DigiTypography>
 
-          <JobSearch search={searchJobs}/>
-        </DigiLayoutContainer>
+                <JobSearch search={searchJobs}/>
+            </DigiLayoutContainer>
+        </DigiLayoutBlock>
       </div>
     </>
   )
