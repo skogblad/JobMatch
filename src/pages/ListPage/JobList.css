@@ -1,0 +1,41 @@
+.page-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.job-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 800px;
+  width: 100%;
+}
+.job-list li {
+  list-style: none;
+}
+.job-list-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+.job-list-item a {
+  color: var(--digi--amber-700);
+}
+.job-list-item a:hover {
+  color: var(--digi--amber-200);
+}
+
+.item-img img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  background-color: white;
+  border-radius: 4px;
+}
+
+:root {
+  --digi--amber-200: #ffdd93;
+}
