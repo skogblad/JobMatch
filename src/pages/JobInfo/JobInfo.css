@@ -1,0 +1,31 @@
+main {
+    display: flex;
+    width: 100%;
+}
+
+.top{
+    text-align: center;
+    width: 100%;
+}
+
+.job-ad {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-card-column {
+    width: 300px;
+    position: sticky;
+    top: 20px;
+    align-self: flex-start;
+}
+
+:root {
+  --digi--color--border--secondary: #058470;
+
+  .sc-digi-info-card-h .digi-info-card--related.sc-digi-info-card {
+    --BACKGROUND-COLOR: #FFDD93;
+  }
+
+}
