@@ -22,9 +22,24 @@ export interface IJob {
     conditions: string;
   };
 
+  salary_type: {
+    label: string;
+  }
+
+  application_details: {
+    reference: string;
+    url: string;
+  }
+
   occupation: {
     concept_id: string;
     label: string;
     legacy_ams_taxonomy_id: string;
   };
+
+  application_contacts: {
+    name: string;
+    description: string;
+    email: string;
+  }[];
 }
