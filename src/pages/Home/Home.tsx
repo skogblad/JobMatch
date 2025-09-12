@@ -32,7 +32,7 @@ export const Home = () => {
   return (
     <> 
       <div className="home-page">
-        <DigiLayoutBlock afVariation={LayoutBlockVariation.PRIMARY} className="home-block">
+        <DigiLayoutBlock afVariation={LayoutBlockVariation.SECONDARY} className="home-block">
             <DigiLayoutContainer afVerticalPadding>
                 <DigiTypography afVariation={TypographyVariation.SMALL}>
                     <h1>JobMatch</h1>
