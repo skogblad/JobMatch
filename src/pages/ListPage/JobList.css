@@ -1,5 +1,6 @@
 .page-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   padding: 2rem;
 }
@@ -29,8 +30,6 @@
 }
 
 .item-img img {
-  width: 80px;
-  height: 80px;
   object-fit: contain;
   background-color: white;
   border-radius: 4px;
@@ -38,4 +37,9 @@
 
 :root {
   --digi--amber-200: #ffdd93;
+}
+
+.pagination-nav {
+  display: flex;
+  flex-direction: row;
 }
