@@ -1,0 +1,24 @@
+.sc-digi-header-navigation-h .digi-header-navigation__inner.sc-digi-header-navigation {
+  justify-content: flex-end;
+}
+
+.sc-digi-logo-h .digi-logo--system-name.sc-digi-logo svg.sc-digi-logo {
+  display: none;
+}
+
+.sc-digi-header-h .digi-header__wrapper.sc-digi-header {
+  width: 300px;
+  margin-left: 20px;
+}
+
+.sc-digi-logo-h {
+  display: flex;
+  justify-content: center;
+}
+
+:root {
+  --digi--leaf-500: #058470;
+  --digi--color--background--neutral-8: #fff;
+  --digi--color--text--link: #058470;
+  --digi--global--color--cta--hover--base: #046355;
+}
