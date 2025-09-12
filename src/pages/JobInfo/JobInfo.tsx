@@ -80,15 +80,18 @@ export const JobInfo = () => {
               <p style={{ whiteSpace: "pre-line" }}>{job?.description.text}</p>
             </DigiLayoutContainer>
 
+            {job?.application_contacts?.[0]?.description && (
+              <DigiLayoutContainer>
+                <p>
+                  <strong>Kontakt: </strong>
+                  {job.application_contacts[0].description}
+                </p>
+                {job.application_contacts[0].email && (
+                  <p>{job.application_contacts[0].email}</p>
+                )}
+              </DigiLayoutContainer>
+            )}
 
-            <DigiLayoutContainer>
-              <p>
-                <strong>Kontakt: </strong>
-                {job?.application_contacts[0]?.description}
-              </p>
-              <p>{job?.application_contacts[0]?.email}</p>
-            </DigiLayoutContainer>
-            
             <DigiLayoutContainer>
               <p>Annons-Id: {job?.id}</p>
               <p>Publicerad: {formattedPublishDate}</p>
