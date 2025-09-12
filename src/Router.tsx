@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router";
 import { Layout } from "./pages/Layout";
 import { Error } from "./pages/Error";
 import { Home } from "./pages/Home";
-import { JobInfo } from "./pages/JobInfo";
+import { JobInfo } from "./pages/JobInfo/JobInfo";
 import { JobList } from "./pages/JobList";
 
 export const router = createBrowserRouter([
