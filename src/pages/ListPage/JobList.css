@@ -1,16 +1,12 @@
 .page-container {
   display: flex;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
-  padding: 2rem;
 }
 
 .job-list {
   list-style: none;
-  padding: 0;
-  margin: 0;
-  max-width: 800px;
-  width: 100%;
 }
 .job-list li {
   list-style: none;
@@ -18,9 +14,10 @@
 .job-list-item {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem;
+  padding: 50px 60px;
+  margin-bottom: 10px;
   border-bottom: 1px solid #e0e0e0;
+  background-color: rgb(245, 243, 239);
 }
 .job-list-item a {
   color: var(--digi--amber-700);
@@ -39,7 +36,7 @@
   --digi--amber-200: #ffdd93;
 }
 
-.pagination-nav {
-  display: flex;
-  flex-direction: row;
+.digi-form-input-search {
+  background-color: var(--digi--amber-200);
+  padding: 50px 60px;
 }
