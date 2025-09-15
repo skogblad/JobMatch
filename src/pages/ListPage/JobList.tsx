@@ -19,6 +19,7 @@ import {
   LayoutMediaObjectAlignment,
   TypographyVariation,
 } from "@digi/arbetsformedlingen";
+import { JobSearch } from "../../components/JobSerch";
 
 export const JobList = () => {
   const [jobs, setJobs] = useState<IJob[]>([]);
@@ -48,8 +49,17 @@ export const JobList = () => {
     navigate(`?search=${searchText}&page=${newPage}`);
   };
 
+  const searchJobs = async (searchText: string) => {
+    const searchResults = await getJobs(searchText);
+    setJobs(searchResults.hits);
+
+    navigate(`/jobs?search=${encodeURIComponent(searchText)}`);
+  };
+
   return (
     <DigiLayoutContainer className="page-container">
+      <JobSearch search={searchJobs} />
+
       <DigiList className="job-list">
         {jobs.map((j) => (
           <li key={j.id}>
