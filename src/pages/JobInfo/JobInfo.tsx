@@ -14,7 +14,7 @@ import {
   DigiTypography,
 } from "@digi/arbetsformedlingen-react";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams, useSearchParams } from "react-router";
 import type { IJob } from "../../models/IJob";
 import { getJobById } from "../../services/JobService";
 import "./JobInfo.css";
@@ -22,6 +22,8 @@ import "./JobInfo.css";
 export const JobInfo = () => {
   const { id } = useParams<{ id: string }>();
   const [job, setJob] = useState<IJob>();
+  const [searchParams] = useSearchParams();
+  const searchText = searchParams.get("search") || "";
 
   useEffect(() => {
     const fetchJob = async () => {
@@ -59,7 +61,7 @@ export const JobInfo = () => {
         afVariation={LayoutBlockVariation.PRIMARY}
         style={{ display: "flex" }}
       >
-        <DigiLinkInternal afHref="/jobs">Tillbaka</DigiLinkInternal>
+        <DigiLinkInternal afHref={`/jobs?search=${encodeURIComponent(searchText)}`}>Tillbaka</DigiLinkInternal>
         <h2>{job?.occupation.label}</h2>
 
         <div className="job-ad">

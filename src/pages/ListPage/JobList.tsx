@@ -77,7 +77,9 @@ export const JobList = () => {
                 afAlt={j.logo_url ? j.employer?.name : "Placeholder image"}
               />
               <DigiTypography afVariation={TypographyVariation.SMALL}>
-                <DigiLink afHref={`/jobs/${j.id}`}>
+                <DigiLink
+                 afHref={`/jobs/${j.id}?search=${encodeURIComponent(searchText)}`}
+                 >
                   <h3>{j.headline}</h3>
                 </DigiLink>
                 <p>{j.occupation.label}</p>
