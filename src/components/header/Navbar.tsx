@@ -2,6 +2,7 @@ import { DigiHeader, DigiHeaderNavigation, DigiHeaderNavigationItem, DigiLayoutB
 import "./Navbar.css";
 import { LayoutBlockVariation, LayoutContainerVariation } from "@digi/arbetsformedlingen";
 import { useLocation } from "react-router";
+import logo from "../../assets/logo3.png"
 
 export const Navbar = () => {
   const location = useLocation();
@@ -20,7 +21,7 @@ export const Navbar = () => {
                 afUnlazy
                 afHeight="60"
                 afWidth="60"
-                afSrc="src/assets/logo3.png"
+                afSrc={logo}
                 afAlt="JobMatch logotyp"
               />
           </a>
