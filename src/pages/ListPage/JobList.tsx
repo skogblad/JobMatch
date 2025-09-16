@@ -19,7 +19,7 @@ import {
   LayoutMediaObjectAlignment,
   TypographyVariation,
 } from "@digi/arbetsformedlingen";
-import { JobSearch } from "../../components/JobSerch";
+import { JobSearch } from "../../components/search/JobSearch";
 
 export const JobList = () => {
   const [jobs, setJobs] = useState<IJob[]>([]);
@@ -78,8 +78,10 @@ export const JobList = () => {
               />
               <DigiTypography afVariation={TypographyVariation.SMALL}>
                 <DigiLink
-                 afHref={`/jobs/${j.id}?search=${encodeURIComponent(searchText)}`}
-                 >
+                  afHref={`/jobs/${j.id}?search=${encodeURIComponent(
+                    searchText
+                  )}`}
+                >
                   <h3>{j.headline}</h3>
                 </DigiLink>
                 <p>{j.occupation.label}</p>
