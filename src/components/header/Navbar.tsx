@@ -2,7 +2,7 @@ import { DigiHeader, DigiHeaderNavigation, DigiHeaderNavigationItem, DigiLayoutB
 import "./Navbar.css";
 import { LayoutBlockVariation, LayoutContainerVariation } from "@digi/arbetsformedlingen";
 import { useLocation } from "react-router";
-import logo from "../../assets/logo3.png"
+import logo from "../../assets/logo_green.png"
 
 export const Navbar = () => {
   const location = useLocation();
