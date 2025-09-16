@@ -14,7 +14,7 @@ type JobSearchProps = {
 
 export const JobSearch = ({ search }: JobSearchProps) => {
   const [searchText, setSearchText] = useState("");
-  const [suggestions, setSuggestions] = useState<string[]>([]); // för /complete
+  const [suggestions, setSuggestions] = useState<string[]>([]);
 
   const handleSubmit = () => {
     console.log("handleSubmit called, searchText:", searchText);
@@ -34,12 +34,9 @@ export const JobSearch = ({ search }: JobSearchProps) => {
       setSuggestions([]);
       return;
     }
-    try {
-      const completions = await getJobCompletion(query, 5);
-      setSuggestions(completions.map((c) => c.found_phrase || c.value));
-    } catch (err) {
-      console.error(err);
-    }
+
+    const completions = await getJobCompletion(query, 5);
+    setSuggestions(completions.map((c) => c.found_phrase || c.value));
   };
 
   useEffect(() => {
