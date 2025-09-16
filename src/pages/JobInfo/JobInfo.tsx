@@ -19,6 +19,8 @@ import type { IJob } from "../../models/IJob";
 import { getJobById } from "../../services/JobService";
 import "./JobInfo.css";
 
+const NO_INFO_TEXT: string = "Information saknas";
+
 export const JobInfo = () => {
   const { id } = useParams<{ id: string }>();
   const [job, setJob] = useState<IJob>();
@@ -35,9 +37,6 @@ export const JobInfo = () => {
     fetchJob();
   }, [id]);
 
-  console.log("Job:", job);
-  console.log("Description:", job?.description);
-  console.log("Needs:", job?.description.needs);
 
   const formattedDeadline = job?.application_deadline
     ? new Date(job.application_deadline).toLocaleDateString("sv-SE", {
@@ -61,7 +60,11 @@ export const JobInfo = () => {
         afVariation={LayoutBlockVariation.PRIMARY}
         style={{ display: "flex" }}
       >
-        <DigiLinkInternal afHref={`/jobs?search=${encodeURIComponent(searchText)}`}>Tillbaka</DigiLinkInternal>
+        <DigiLinkInternal
+          afHref={`/jobs?search=${encodeURIComponent(searchText)}`}
+        >
+          Tillbaka
+        </DigiLinkInternal>
         <h2>{job?.occupation.label}</h2>
 
         <div className="job-ad">
@@ -70,33 +73,49 @@ export const JobInfo = () => {
               <img src={job?.logo_url} alt={job?.employer?.name} />
               <h3>{job?.headline}</h3>
               <h4>{job?.employer?.name}</h4>
+              
               <p>
-                Plats: {job?.workplace_address?.municipality} i{" "}
-                {job?.workplace_address?.region}
+                <strong>Plats:</strong> {job?.workplace_address?.municipality && job?.workplace_address?.region ? `${job?.workplace_address?.municipality} i
+                ${job?.workplace_address?.region}` : NO_INFO_TEXT}
               </p>
-              <p>Anställningsform: {job?.description.conditions}</p>
-              <p>Lönetyp: {job?.salary_type.label}</p>
+              
+              <p>
+                <strong>Anställningsform:</strong> {job?.description.conditions ?? NO_INFO_TEXT}
+              </p>
+              
+              <p>
+                <strong>Lönetyp:</strong> {job?.salary_type.label ?? NO_INFO_TEXT}
+              </p>
             </DigiLayoutContainer>
 
-            <DigiLayoutContainer>
-              <p style={{ whiteSpace: "pre-line" }}>{job?.description.text}</p>
-            </DigiLayoutContainer>
+            <div className="job-description">
+              <DigiLayoutContainer>
+                <h4>Om tjänsten</h4>
+                <p style={{ whiteSpace: "pre-line" }}>
+                  {job?.description.text}
+                </p>
+              </DigiLayoutContainer>
+            </div>
 
             {job?.application_contacts?.[0]?.description && (
-              <DigiLayoutContainer>
-                <p>
-                  <strong>Kontakt: </strong>
-                  {job.application_contacts[0].description}
-                </p>
-                {job.application_contacts[0].email && (
-                  <p>{job.application_contacts[0].email}</p>
-                )}
-              </DigiLayoutContainer>
+              <div className="contact">
+                <DigiLayoutContainer>
+                  <p>
+                    <strong>Kontakt: </strong>
+                    {job.application_contacts[0].description}
+                  </p>
+                  {job.application_contacts[0].email && (
+                    <p>{job.application_contacts[0].email}</p>
+                  )}
+                </DigiLayoutContainer>
+              </div>
             )}
 
             <DigiLayoutContainer>
-              <p>Annons-Id: {job?.id}</p>
-              <p>Publicerad: {formattedPublishDate}</p>
+              <div className="id-published">
+                <p>Annons-Id: {job?.id}</p>
+                <p>Publicerad: {formattedPublishDate}</p>
+              </div>
             </DigiLayoutContainer>
           </div>
 
