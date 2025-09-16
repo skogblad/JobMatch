@@ -22,6 +22,9 @@
 .job-list-item a {
   color: #046355;
 }
+.job-list-item a:visited {
+  color: #6a958e;
+}
 .job-list-item a:hover {
   color: black;
 }
