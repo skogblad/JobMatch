@@ -20,10 +20,10 @@
   background-color: rgb(245, 243, 239);
 }
 .job-list-item a {
-  color: var(--digi--amber-700);
+  color: #046355;
 }
 .job-list-item a:hover {
-  color: var(--digi--amber-200);
+  color: black;
 }
 
 .item-img img {
@@ -31,6 +31,7 @@
   background-color: white;
   border-radius: 4px;
 }
+
 
 :root {
   --digi--amber-200: #ffdd93;
