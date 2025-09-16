@@ -113,8 +113,8 @@ export const JobInfo = () => {
 
             <DigiLayoutContainer>
               <div className="id-published">
-                <p>Annons-Id: {job?.id}</p>
-                <p>Publicerad: {formattedPublishDate}</p>
+                <p><strong>Annons-Id:</strong> {job?.id}</p>
+                <p><strong>Publicerad:</strong> {formattedPublishDate}</p>
               </div>
             </DigiLayoutContainer>
           </div>
