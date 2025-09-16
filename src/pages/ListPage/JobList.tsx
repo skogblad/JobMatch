@@ -26,6 +26,8 @@ export const JobList = () => {
   const [total, setTotal] = useState(0);
   const [searchParams] = useSearchParams();
   const searchText = searchParams.get("search") || "";
+  const navigate = useNavigate();
+
   const limit = 10;
 
   let page = parseInt(searchParams.get("page") || "1", 10);
@@ -34,16 +36,21 @@ export const JobList = () => {
   useEffect(() => {
     const getData = async () => {
       const res = await getJobs(searchText, limit, page);
+
+      if (!res.hits || res.hits.length === 0) {
+        navigate("/no-jobs-found");
+        return;
+      }
+
       setJobs(res.hits);
       setTotal(res.total);
 
-      console.log(res.total); //????? varför är det inte ett NUMMER??
+      console.log(res.total);
     };
 
     getData();
-  }, [searchText, page]);
+  }, [searchText, page, navigate]);
 
-  const navigate = useNavigate();
   const handlePageChange = (event: CustomEvent<number>) => {
     const newPage = event.detail;
     navigate(`?search=${searchText}&page=${newPage}`);
