@@ -1,30 +1,33 @@
-import { useRef } from "react";
-import { useNavigate, useSearchParams } from "react-router";
 import { DigiNavigationPagination } from "@digi/arbetsformedlingen-react";
-import type { DigiNavigationPagination as DigiNavigationPaginationType } from "@digi/arbetsformedlingen/components/digi-navigation-pagination";
 
-export const Pagination = ({ total }: { total: number }) => {
-  const [searchParams] = useSearchParams();
-  const searchText = searchParams.get("search") || "";
-  const page = parseInt(searchParams.get("page") || "1", 10) || 1;
+type PaginationProps = {
+  total: number | { value: number };
+  limit: number;
+  page: number;
+  onPageChange: (page: number) => void;
+};
 
-  const paginationRef = useRef<DigiNavigationPaginationType>(null);
-  const navigate = useNavigate();
+export const Pagination = ({
+  total,
+  limit,
+  page,
+  onPageChange,
+}: PaginationProps) => {
+  const totalValue = typeof total === "object" ? total.value : total;
+  const totalPages = Math.ceil(totalValue / limit);
 
   const handlePageChange = (event: CustomEvent<number>) => {
-    const newPage = event.detail;
-    navigate(`?search=${searchText}&page=${newPage}`);
+    onPageChange(event.detail);
   };
 
   return (
     <>
       <DigiNavigationPagination
-        afTotalPages={44}
+        afTotalPages={totalPages}
         afInitActivePage={page}
-        afTotalResults={total}
+        afTotalResults={totalValue}
         afResultName="annonser"
         onAfOnPageChange={handlePageChange}
-        ref={paginationRef}
       />
     </>
   );

@@ -1,5 +1,7 @@
 export interface IJobSearchRes {
-  total: number;
+  total: {
+    value: number;
+  };
   hits: IJob[];
 }
 
@@ -24,12 +26,12 @@ export interface IJob {
 
   salary_type: {
     label: string;
-  }
+  };
 
   application_details: {
     reference: string;
     url: string;
-  }
+  };
 
   occupation: {
     concept_id: string;
@@ -41,5 +43,5 @@ export interface IJob {
     name: string;
     description: string;
     email: string;
-  }[];
+  };
 }
