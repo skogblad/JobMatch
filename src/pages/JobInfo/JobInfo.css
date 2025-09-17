@@ -13,20 +13,10 @@ main {
   color: #046355;
 }
 
-.top{
-    text-align: center;
-    width: 100%;
-}
-
 .job-ad {
-    width: 100%;
+    /* width: 100%; */
     display: flex;
     justify-content: space-between;
-}
-
-.content-column, 
-.info-card-column {
-  max-width: 100%;
 }
 
 .job-description {
@@ -38,6 +28,7 @@ main {
     position: sticky;
     top: 20px;
     align-self: flex-start;
+    margin-bottom: 1rem;
 }
 
 .contact {
@@ -46,7 +37,6 @@ main {
 
 .id-published {
   margin-top: 2rem;
-  gap: 0;
 }
 
 @media (max-width: 768px) {
