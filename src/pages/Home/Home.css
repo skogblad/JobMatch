@@ -27,11 +27,3 @@
     width: 100%;
     max-width: 600px;
 }
-
-:root {
-    --digi--color--background--secondary: #FFDD93;
-    --digi--color--background--inverted-1: #058470;
-    --digi--color--background--inverted-6: #046355;
-    --digi--color--border--secondary: #058470;
-    --digi--color--border--neutral-3: #fff;
-}

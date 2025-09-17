@@ -15,10 +15,3 @@
   display: flex;
   justify-content: center;
 }
-
-:root {
-  --digi--leaf-500: #058470;
-  --digi--color--background--neutral-8: #fff;
-  --digi--color--text--link: #058470;
-  --digi--global--color--cta--hover--base: #046355;
-}
