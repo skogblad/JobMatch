@@ -18,6 +18,7 @@ import { useParams, useSearchParams } from "react-router";
 import type { IJob } from "../../models/IJob";
 import { getJobById } from "../../services/JobService";
 import "./JobInfo.css";
+import { formatDate } from "../../helpers/dateHelper";
 
 const NO_INFO_TEXT: string = "Information saknas";
 
@@ -26,6 +27,8 @@ export const JobInfo = () => {
   const [job, setJob] = useState<IJob>();
   const [searchParams] = useSearchParams();
   const searchText = searchParams.get("search") || "";
+  const formattedDeadline = formatDate(job?.application_deadline);
+  const formattedPublishDate = formatDate(job?.publication_date);
 
   useEffect(() => {
     const fetchJob = async () => {
@@ -37,22 +40,6 @@ export const JobInfo = () => {
     fetchJob();
   }, [id]);
 
-
-  const formattedDeadline = job?.application_deadline
-    ? new Date(job.application_deadline).toLocaleDateString("sv-SE", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      })
-    : null;
-
-  const formattedPublishDate = job?.publication_date
-    ? new Date(job.publication_date).toLocaleDateString("sv-SE", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      })
-    : null;
 
   return (
     <DigiTypography afVariation={TypographyVariation.SMALL}>

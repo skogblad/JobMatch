@@ -20,6 +20,7 @@ import {
   TypographyVariation,
 } from "@digi/arbetsformedlingen";
 import { JobSearch } from "../../components/search/JobSearch";
+import { formatDate } from "../../helpers/dateHelper";
 
 export const JobList = () => {
   const [jobs, setJobs] = useState<IJob[]>([]);
@@ -92,7 +93,7 @@ export const JobList = () => {
                   <h3>{j.headline}</h3>
                 </DigiLink>
                 <p>{j.occupation.label}</p>
-                <p>Publiserad {j.publication_date}</p>
+                <p>Publicerad {formatDate(j.publication_date) ?? "Datum saknas"}</p>
               </DigiTypography>
             </DigiLayoutMediaObject>
           </li>
