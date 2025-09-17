@@ -6,6 +6,24 @@ html, body {
   margin: 0;
 }
 
+:root {
+  --digi--color--background--secondary: #FFDD93;
+  --digi--color--background--inverted-1: #058470;
+  --digi--color--background--inverted-6: #046355;
+  --digi--color--border--secondary: #058470;
+  --digi--color--border--neutral-3: #fff;
+  --digi--color--border--secondary: #058470;
+  --digi--amber-200: #ffdd93;
+  --digi--leaf-500: #058470;
+  --digi--color--background--neutral-8: #fff;
+  --digi--color--text--link: #058470;
+  --digi--global--color--cta--hover--base: #046355;
+
+  .sc-digi-info-card-h .digi-info-card--related.sc-digi-info-card {
+    --BACKGROUND-COLOR: #FFDD93;
+  }
+}
+
 #root {
   display: flex;
   flex-direction: column;

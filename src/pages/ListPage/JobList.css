@@ -35,11 +35,6 @@
   border-radius: 4px;
 }
 
-
-:root {
-  --digi--amber-200: #ffdd93;
-}
-
 .digi-form-input-search {
   background-color: var(--digi--amber-200);
   padding: 50px 60px;
