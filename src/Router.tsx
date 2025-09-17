@@ -4,7 +4,7 @@ import { Error } from "./pages/Error";
 import { Home } from "./pages/Home/Home";
 import { JobInfo } from "./pages/JobInfo/JobInfo";
 import { JobList } from "./pages/ListPage/JobList";
-import { NoJobsFound } from "./components/noJobs/NoJobs";
+import { NoJobsFound } from "./components/noJobsFound/NoJobsFound";
 
 export const router = createBrowserRouter([
   {
