@@ -2,14 +2,16 @@ import { type IJob, type IJobSearchRes } from "../models/IJob";
 import { get } from "./serviceBase";
 
 const BASE_URL = "https://jobsearch.api.jobtechdev.se";
+const MAX_TOTAL = 2000;
 
 export const getJobs = async (
   searchText?: string,
   limit: number = 10,
   page: number = 1
 ) => {
-  const offset = (page - 1) * limit;
-  let url = `${BASE_URL}/search?limit=${limit}&offset=${offset}`;
+  const pageLimit = Math.min(limit, MAX_TOTAL);
+  const offset = (page - 1) * pageLimit;
+  let url = `${BASE_URL}/search?limit=${pageLimit}&offset=${offset}`;
 
   if (searchText && searchText.trim() !== "") {
     url += `&q=${encodeURIComponent(searchText)}`;
