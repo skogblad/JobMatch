@@ -2,37 +2,19 @@ import {
   LayoutBlockVariation,
   TypographyVariation,
 } from "@digi/arbetsformedlingen";
+
 import {
   DigiLayoutBlock,
   DigiLayoutContainer,
   DigiTypography,
 } from "@digi/arbetsformedlingen-react";
+
 import "./Home.css";
-import { useEffect, useState } from "react";
-import type { IJob } from "../../models/IJob";
-import { getJobs } from "../../services/JobService";
 import { JobSearch } from "../../components/search/JobSearch";
-import { useNavigate } from "react-router-dom";
+import { useJobSearch } from "../../hooks/useJobSearch";
 
 export const Home = () => {
-  const [jobs, setJobs] = useState<IJob[]>([]);
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const getData = async () => {
-      const res = await getJobs();
-      setJobs(res.hits);
-    };
-
-    if (jobs.length === 0) getData();
-  }, [jobs.length]); // jobs.length som dependency endast om listan är tom
-
-  const searchJobs = async (searchText: string) => {
-    const searchResults = await getJobs(searchText);
-    setJobs(searchResults.hits); // hits som relevant i detta fall för att undvika typfel i jobs
-
-    navigate(`/jobs?search=${encodeURIComponent(searchText)}`);
-  };
+  const { searchJobs } = useJobSearch();
 
   return (
     <>
