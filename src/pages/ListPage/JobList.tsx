@@ -1,114 +1,16 @@
 import "./JobList.css";
-import placeholder from "../../assets/placeholder.svg";
-import { useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router";
-import { getJobs } from "../../services/JobService";
-import type { IJob } from "../../models/IJob";
-
-import {
-  DigiLayoutContainer,
-  DigiLayoutMediaObject,
-  DigiLink,
-  DigiList,
-  DigiMediaImage,
-  DigiNavigationPagination,
-  DigiTypography,
-} from "@digi/arbetsformedlingen-react";
-
-import {
-  LayoutMediaObjectAlignment,
-  TypographyVariation,
-} from "@digi/arbetsformedlingen";
+import { DigiLayoutContainer } from "@digi/arbetsformedlingen-react";
 import { JobSearch } from "../../components/search/JobSearch";
-import { formatDate } from "../../helpers/dateHelper";
+import { ListContent } from "../../components/list/ListContent";
+import { useJobSearch } from "../../hooks/useJobSearch";
 
 export const JobList = () => {
-  const [jobs, setJobs] = useState<IJob[]>([]);
-  const [total, setTotal] = useState(0);
-  const [searchParams] = useSearchParams();
-  const searchText = searchParams.get("search") || "";
-  const navigate = useNavigate();
-
-  const limit = 10;
-
-  let page = parseInt(searchParams.get("page") || "1", 10);
-  if (isNaN(page) || page < 1) page = 1;
-
-  useEffect(() => {
-    const getData = async () => {
-      const res = await getJobs(searchText, limit, page);
-
-      if (!res.hits || res.hits.length === 0) {
-        navigate("/no-jobs-found");
-        return;
-      }
-
-      setJobs(res.hits);
-      setTotal(res.total);
-
-      console.log(res.total);
-    };
-
-    getData();
-  }, [searchText, page, navigate]);
-
-  const handlePageChange = (event: CustomEvent<number>) => {
-    const newPage = event.detail;
-    navigate(`?search=${searchText}&page=${newPage}`);
-  };
-
-  const searchJobs = async (searchText: string) => {
-    const searchResults = await getJobs(searchText);
-    setJobs(searchResults.hits);
-
-    navigate(`/jobs?search=${encodeURIComponent(searchText)}`);
-  };
+  const { searchJobs } = useJobSearch();
 
   return (
     <DigiLayoutContainer className="page-container">
       <JobSearch search={searchJobs} />
-
-      <DigiList className="job-list">
-        {jobs.map((j) => (
-          <li key={j.id}>
-            <DigiLayoutMediaObject
-              className="job-list-item"
-              afAlignment={LayoutMediaObjectAlignment.CENTER}
-            >
-              <DigiMediaImage
-                afUnlazy
-                slot="media"
-                className="item-img"
-                afHeight="80"
-                afWidth="80"
-                afSrc={j.logo_url ? j.logo_url : placeholder}
-                afAlt={j.logo_url ? j.employer?.name : "Placeholder image"}
-              />
-              <DigiTypography afVariation={TypographyVariation.SMALL}>
-                <DigiLink
-                  afHref={`/jobs/${j.id}?search=${encodeURIComponent(
-                    searchText
-                  )}`}
-                >
-                  <h3>{j.headline}</h3>
-                </DigiLink>
-                <p>{j.occupation.label}</p>
-                <p>Publicerad {formatDate(j.publication_date) ?? "Datum saknas"}</p>
-              </DigiTypography>
-            </DigiLayoutMediaObject>
-          </li>
-        ))}
-      </DigiList>
-
-      <DigiNavigationPagination
-        afTotalPages={10} //TODO: APIet retunerar ett objekt, inte ett rent nummer wth {value: 1234}
-        afInitActive-page={1}
-        afCurrentResultStart={1}
-        afCurrentResultEnd={1}
-        afTotalResults={total}
-        afResultName="annonser"
-        onAfOnPageChange={handlePageChange}
-      />
+      <ListContent />
     </DigiLayoutContainer>
   );
 };
