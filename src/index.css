@@ -1,6 +1,22 @@
 @import "@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/digi-arbetsformedlingen.css";
 @import "@digi/arbetsformedlingen/dist/digi-arbetsformedlingen/fonts/src/fonts.css";
 
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 main {
+  flex: 1; /* Tar upp all plats mellan header och footer */
   justify-content: center;
+}
+
+.footer-container {
+  margin-top: auto; /* Skjuter ner footern till botten */
 }
