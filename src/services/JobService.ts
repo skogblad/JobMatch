@@ -1,5 +1,4 @@
 import { type IJob, type IJobSearchRes } from "../models/IJob";
-import { type ICompletionResponse } from "../models/ICompletion";
 import { get } from "./serviceBase";
 
 const BASE_URL = "https://jobsearch.api.jobtechdev.se";
@@ -23,12 +22,4 @@ export const getJobs = async (
 export const getJobById = async (id: string) => {
   const url = `${BASE_URL}/ad/${id}`;
   return await get<IJob>(url);
-};
-
-export const getJobCompletion = async (searchText: string, limit = 5) => {
-  const url = `${BASE_URL}/complete?q=${encodeURIComponent(
-    searchText
-  )}&limit=${limit}`;
-  const data = await get<ICompletionResponse>(url);
-  return data.typeahead;
 };
