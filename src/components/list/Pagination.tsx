@@ -26,6 +26,8 @@ export const Pagination = ({
         afTotalPages={totalPages}
         afInitActivePage={page}
         afTotalResults={totalValue}
+        afCurrentResultStart={(page - 1) * limit + 1}
+        afCurrentResultEnd={Math.min(page * limit, totalValue)}
         afResultName="annonser"
         onAfOnPageChange={handlePageChange}
       />
