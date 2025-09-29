@@ -1,6 +1,7 @@
 # 📌 Rättningsrapport – fed24d-case-af-jobtech-team-11-1
 
 ## 🎯 Uppgiftens Krav:
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/6VsM7MHT)
 # Skapa en egen Platsbanken för ert drömscenario 
 
 Dokumentation om Arbetsförmedlingens öppna data finns på https://jobtechdev.se. All öppna data från arbetsförmedlingen och andra offentliga organisationen går även att hitta direkt på dataportal.se. 
@@ -8,17 +9,17 @@ I detta dokument ges två förslag på användningsfall som vi tror är lämplig
 
 Läs först igenom kom-igång hjälpen 
 
--  [Övergripande dokumentation API:etJobSearch](https://data.arbetsformedlingen.se/data/platsannonser/)
--  [Kom-igång guide](https://gitlab.com/arbetsformedlingen/job-ads/jobsearch/jobsearch-api/-/blob/main/docs/GettingStartedJobSearchSE.md)
+-  [Övergripande dokumentation API:etJobSearch](https://jobtechdev.se/sv/components/jobsearch)
+-  [Kom-igång guide](https://gitlab.com/arbetsformedlingen/education/education-api/-/blob/main/GETTING_STARTED.md)
 
 ## Prova att utforska datan med vår interaktiva tjänst 
 
-Görs genom att öppna Swagger-sidan för API:et (för att enkelt testa olika endpoints i API:et och läsa dokumentation för respektive endpoint): [Search job ads (jobtechdev.se)](https://jobsearch.api.jobtechdev.se/)
+Görs genom att öppna Swagger-sidan för API:et (för att enkelt testa olika endpoints i API:et och läsa dokumentation för respektive endpoint): Search job ads (jobtechdev.se) 
 
 ## Uppgift 
 
-Använd endpoint **/search** för att söka bland befintliga annonser. 
-Det går även bra att använda historiska annonser om ni vill jämföra aktuella annonser med hur det har sett ut tidigare. Detta api finns här: [Historical job ads (jobtechdev.se)](https://historical.api.jobtechdev.se/)
+Använd endpoint https://jobsearch.api.jobtechdev.se/ för att använda/söka bland befintliga annonser. 
+Det går även bra att använda historiska annonser om ni vill jämföra aktuella annonser med hur det har sett ut tidigare. Detta api finns här: Historical job ads (jobtechdev.se)
 
 Om möjligt, använd en grafisk presentation av era resultat genom t.ex. stapeldiagram eller linjegrafer.
 
@@ -38,27 +39,23 @@ Er slutprodukt ska ej innehålla Arbetsförmedlingens logga eller färger. Anpas
 - Styled components (som drar nytta av designsystemet) 
 - Grafisk presentation av datat 
 - Användning av custom hook där det finns möjlighet
-- Använd endpoint /complete för att lägga till autocomplete-funktion och få förslag på begrepp vid fritextsökning
 
 ## 🔍 ESLint-varningar:
 
 
 ## 🏆 **Betyg: G**
-📌 **Motivering:** Appen uppfyller G-kraven: data hämtas strukturerat via fetch i en separat tjänst (serviceBase/JobService), React-koncept som routing, state och en custom hook används, och presentationen bygger på designsystemet. Ni har sök, listvy med pagination samt detaljsida.
+📌 **Motivering:** G‑kraven uppfylls: data hämtas strukturerat via fetch i en tjänst (serviceBase + JobService), React‑koncept används (state, hooks, routing, route error page), designsystemet används genomgående och koden är överlag läsbar och konsekvent. Extra: ni har en custom hook för sök och fungerande paginering.
 
 💡 **Förbättringsförslag:**  
-- Robusthet i datamodeller: IJob.application_contacts används som array (job?.application_contacts?.[0]) men är typad som ett objekt. Ändra till ApplicationContact[] och gör flera fält valfria (t.ex. description, salary_type, application_details) så att ni kan kedja säkert.
-- Optional chaining-buggar: Använd kedjad optional chaining där fält kan saknas. Exempel: job?.salary_type?.label, job?.description?.conditions, job?.application_details?.url. I nuvarande kod kan det bli runtime-fel om underobjekt saknas.
-- Felhantering vid API-anrop: serviceBase.get saknar kontroll av response.ok och try/catch. Lägg till felhantering och visa en användarvänlig error/empty state samt loading-tillstånd i listor och detaljsida.
-- Konsistens i routing: Importera från react-router-dom (RouterProvider, createBrowserRouter, Link, useNavigate, useSearchParams). Undvik <a href> för interna länkar (Navbar/Footer); använd <Link> för SPA-navigering och bättre UX.
-- Empty state i listvy: Om /jobs?search=... ger 0 träffar via direktlänk visas ingen feedback. Visa NoJobsFound eller en tydlig tomvy även i ListContent.
-- Rensa debug-loggar: Ta bort console.log i JobSearch och undvik dubbla eventhanterare. Välj en av onAfOnChange/onAfOnInput och typa event korrekt.
-- Bildfallback i detaljsida: I JobInfo saknas fallback om logo_url är tom. Återanvänd placeholder eller visa tomt state samt sätt storlek/alt.
-- Tillgänglighet och semantik: Säkerställ rubrikhierarki (en H1 per sida, följ med H2/H3), undvik att lägga blockrubriker direkt i länkar om det inte behövs. Kontrollera länktexter så att de är självbeskrivande.
-- CSS underhållbarhet: Ni överskuggar interna komponentklasser (.sc-digi-...). Dessa kan ändras mellan versioner. Försök använda design tokens/variabler, komponenternas props eller egna wrapper-klasser.
-- Konfiguration: Flytta BASE_URL till en miljövariabel (Vite env) för enklare byte mellan miljöer.
-- Språk/kopior: Korrigera stavfel ("stavnig" -> "stavning").
-- Bonus för VG: Lägg till grafiska visualiseringar (t.ex. top 10 yrken/orter), använd /complete för autocomplete i sök, och/eller implementera en custom hook för pagination/datahämtning med abort/debounce.
+- Fel import och intern navigering: Använd react-router-dom i stället för react-router för Link/useNavigate/useLocation/useParams/useSearchParams. Byt alla interna <a href> till <Link to> för att undvika full sidladdning (t.ex. i Navbar och Footer).
+- Felhantering vid hämtning: Lägg till response.ok‑kontroll, try/catch och gärna AbortController (avbryt tidigare anrop) i serviceBase.get. Visa laddnings- och felstatus i UI.
+- Dubbelhämtning i sök: useJobSearch anropar getJobs för att "pinga" API:t och navigerar sedan till listan som hämtar igen. Navigera direkt och låt listan hantera fallet 0 träffar, eller skicka med sökresultat i state.
+- Typningsfel: IJob.application_contacts är definierad som ett objekt men används som en array (job.application_contacts[0]). Uppdatera typen till array enligt API:s svar och använd säkra kontroller.
+- Tillgänglighet och fallback: I JobInfo saknas fallback-bild och alt‑text om logo_url saknas. Återanvänd er placeholder och säkra alt‑texter.
+- Konsolloggar: Ta bort console.log i JobSearch före produktion.
+- Färgpalett: Uppgiften säger att inte använda Arbetsförmedlingens färger. Säkerställ att er färgpalett verkligen är egen och inte AF:s varumärkesfärger.
+- Pagination och total-gräns: Ni cappar total till 2000 (bra). Informera användaren om att endast de första 2000 resultaten visas.
+- Bonusmöjligheter: Lägg till enkel graf (t.ex. antal annonser per region/yrke) för extra mervärde och överväg styled-components om ni vill nyttja designsystemets tokens i komponentnivå.
 
 ## 👥 Gruppbidrag
 
