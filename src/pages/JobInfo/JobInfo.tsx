@@ -10,11 +10,10 @@ import {
   DigiInfoCard,
   DigiLayoutBlock,
   DigiLayoutContainer,
-  DigiLinkInternal,
   DigiTypography,
 } from "@digi/arbetsformedlingen-react";
 import { useEffect, useState } from "react";
-import { useParams, useSearchParams } from "react-router";
+import { Link, useParams, useSearchParams } from "react-router";
 import type { IJob } from "../../models/IJob";
 import { getJobById } from "../../services/JobService";
 import "./JobInfo.css";
@@ -27,7 +26,6 @@ export const JobInfo = () => {
   const [job, setJob] = useState<IJob>();
   const [searchParams] = useSearchParams();
   const searchText = searchParams.get("search") || "";
-  const searchTextParam = searchText ? `?search=${encodeURIComponent(searchText)}` : "";
   const formattedDeadline = formatDate(job?.application_deadline);
   const formattedPublishDate = formatDate(job?.publication_date);
 
@@ -48,9 +46,9 @@ export const JobInfo = () => {
         afVariation={LayoutBlockVariation.PRIMARY}
         style={{ display: "flex" }}
       >
-        <DigiLinkInternal afHref={`/jobs${searchTextParam}`}>
+        <Link to={`/jobs?search=${encodeURIComponent(searchText)}`}>
           Tillbaka
-        </DigiLinkInternal>
+        </Link>
         <h2>{job?.occupation.label}</h2>
 
         <div className="job-ad">
