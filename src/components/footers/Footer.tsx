@@ -18,16 +18,16 @@ export const Footer = () => {
             <DigiFooterCard afType={FooterCardVariation.ICON}>
               <ul>
                 <li>
-                  <a href="/">
+                  <Link to="/">
                     <DigiIconHome></DigiIconHome>
                     Hem
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/jobs">
+                  <Link to="/jobs">
                     <DigiIconJobSuggestion></DigiIconJobSuggestion>
                     Jobbannonser
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </DigiFooterCard>

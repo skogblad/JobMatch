@@ -1,7 +1,7 @@
 import { DigiHeader, DigiHeaderNavigation, DigiHeaderNavigationItem, DigiLayoutBlock, DigiLayoutContainer, DigiMediaImage } from "@digi/arbetsformedlingen-react";
 import "./Navbar.css";
 import { LayoutBlockVariation, LayoutContainerVariation } from "@digi/arbetsformedlingen";
-import { useLocation } from "react-router";
+import { Link, useLocation } from "react-router";
 import logo from "../../assets/logo_green.png"
 
 export const Navbar = () => {
@@ -34,11 +34,11 @@ export const Navbar = () => {
             >
 
               <DigiHeaderNavigationItem afCurrentPage={location.pathname === "/"} className="nav-item">
-                <a href="/">Hem</a>
+                <Link to="/">Hem</Link>
               </DigiHeaderNavigationItem>
 
               <DigiHeaderNavigationItem afCurrentPage={location.pathname === "/jobs"}>
-                <a href="/jobs">Jobbannonser</a>
+                <Link to="/jobs">Jobbannonser</Link>
               </DigiHeaderNavigationItem>
 
             </DigiHeaderNavigation>
