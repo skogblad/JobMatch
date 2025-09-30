@@ -43,5 +43,5 @@ export interface IJob {
     name: string;
     description: string;
     email: string;
-  };
+  }[];
 }
