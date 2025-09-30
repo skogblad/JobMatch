@@ -16,7 +16,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("src/assets/frontpage.png");
+  background-image: url("/frontpage.png");
   background-size: cover;
   background-position: center;
   filter: brightness(1.1) blur(4px);
