@@ -7,5 +7,5 @@ export default defineConfig({
     exclude: ["@digi/arbetsformedlingen"],
   },
   plugins: [react()],
-  base: "./",
+  base: process.env.NODE_ENV === "production" ? "/JobMatch/" : "/"
 });
