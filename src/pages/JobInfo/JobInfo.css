@@ -1,6 +1,6 @@
 main {
-    display: flex;
-    width: 100%;
+  display: flex;
+  width: 100%;
 }
 .sc-digi-link-s>a svg, 
 .sc-digi-link-s>a {
@@ -14,8 +14,8 @@ main {
 }
 
 .job-ad {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 .job-description {
@@ -23,11 +23,11 @@ main {
 }
 
 .info-card-column {
-    width: 300px;
-    position: sticky;
-    top: 20px;
-    align-self: flex-start;
-    margin-bottom: 1rem;
+  width: 300px;
+  position: sticky;
+  top: 20px;
+  align-self: flex-start;
+  margin-bottom: 1rem;
 }
 
 .contact {

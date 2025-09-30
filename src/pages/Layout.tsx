@@ -3,13 +3,15 @@ import { Navbar } from "../components/header/Navbar"
 import { Footer } from "../components/footers/Footer"
 
 export const Layout = () => {
-    return (
-        <>
-        <Navbar/>
-        <main>
-            <Outlet/>
-        </main>
-        <Footer/>
-        </>
-    )
+  return (
+    <>
+      <Navbar/>
+
+      <main>
+        <Outlet/>
+      </main>
+
+      <Footer/>
+    </>
+  )
 }
