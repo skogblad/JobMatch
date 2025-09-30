@@ -7,7 +7,7 @@ import { formatDate } from "../../helpers/dateHelper";
 
 import {
   DigiLayoutMediaObject,
-  DigiLink,
+  DigiLinkInternal,
   DigiList,
   DigiMediaImage,
   DigiTypography,
@@ -56,13 +56,13 @@ export const ListContent = () => {
                 afAlt={j.logo_url ? j.employer?.name : "Placeholder image"}
               />
               <DigiTypography afVariation={TypographyVariation.SMALL}>
-                <DigiLink
+                <DigiLinkInternal
                   afHref={`/jobs/${j.id}?search=${encodeURIComponent(
                     searchText
                   )}`}
                 >
                   <h3>{j.headline}</h3>
-                </DigiLink>
+                </DigiLinkInternal>
                 <p>{j.occupation.label}</p>
                 <p>
                   Publicerad {formatDate(j.publication_date) ?? "Datum saknas"}
