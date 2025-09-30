@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter } from "react-router-dom";
 import { Layout } from "./pages/Layout";
 import { Error } from "./pages/Error";
 import { Home } from "./pages/Home/Home";
@@ -30,4 +30,6 @@ export const router = createBrowserRouter([
       },
     ],
   },
-]);
+], {
+  basename: import.meta.env.DEV ? "" : "JobMatch/",
+});
