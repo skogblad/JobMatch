@@ -5,13 +5,17 @@ import { Footer } from "../components/footers/Footer"
 export const Layout = () => {
   return (
     <>
-      <Navbar/>
-
+      <header>
+        <Navbar/>
+      </header>
+      
       <main>
         <Outlet/>
       </main>
 
-      <Footer/>
+      <footer>
+        <Footer/>
+      </footer>
     </>
   )
 }
