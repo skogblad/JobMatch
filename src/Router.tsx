@@ -31,5 +31,5 @@ export const router = createBrowserRouter([
     ],
   },
 ], {
-  basename: import.meta.env.DEV ? "" : "JobMatch/",
+  basename: import.meta.env.DEV ? "" : "JobMatch",
 });
