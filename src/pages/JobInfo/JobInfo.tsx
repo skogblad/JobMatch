@@ -27,6 +27,7 @@ export const JobInfo = () => {
   const [job, setJob] = useState<IJob>();
   const [searchParams] = useSearchParams();
   const searchText = searchParams.get("search") || "";
+  const searchTextParam = searchText ? `?search=${encodeURIComponent(searchText)}` : "";
   const formattedDeadline = formatDate(job?.application_deadline);
   const formattedPublishDate = formatDate(job?.publication_date);
 
@@ -47,9 +48,7 @@ export const JobInfo = () => {
         afVariation={LayoutBlockVariation.PRIMARY}
         style={{ display: "flex" }}
       >
-        <DigiLinkInternal
-          afHref={`/jobs?search=${encodeURIComponent(searchText)}`}
-        >
+        <DigiLinkInternal afHref={`/jobs${searchTextParam}`}>
           Tillbaka
         </DigiLinkInternal>
         <h2>{job?.occupation.label}</h2>
