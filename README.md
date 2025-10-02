@@ -26,7 +26,7 @@ JobMatch is a React web application that lets users browse and search job ads us
 
 #### Front page:
 
-![front_page](/fed24d-case-af-jobtech-team-11-1/src/assets/screenshot/JobMatch_.png)
+![front_page](/src/assets/screenshot/JobMatch_.png)
 
 ## Installation
 
