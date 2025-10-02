@@ -1,38 +1,41 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/6VsM7MHT)
-# Skapa en egen Platsbanken för ert drömscenario 
 
-Dokumentation om Arbetsförmedlingens öppna data finns på https://jobtechdev.se. All öppna data från arbetsförmedlingen och andra offentliga organisationen går även att hitta direkt på dataportal.se. 
-I detta dokument ges två förslag på användningsfall som vi tror är lämpliga för studenter som vill utveckla en applikation på riktig data. All data som är öppna data får vem som helst använda utan att fråga myndigheten om lov, så ingen är begränsad till de exempel vi ger.
+# JobMatch
 
-Läs först igenom kom-igång hjälpen 
+JobMatch is a React web application that lets users browse and search job ads using the JobTech API from Arbetsförmedlingen. The app displays both current and historical job postings, with the option to filter and explore different listings. Data is fetched through a dedicated service built with fetch, and the UI is styled using Arbetsförmedlingen’s design system for consistent and accessible presentation. On top of this, a custom color palette were applied to create a unique visual identity for the project, independent of Arbetsförmedlingen’s branding.
+## Features
 
--  [Övergripande dokumentation API:etJobSearch](https://jobtechdev.se/sv/components/jobsearch)
--  [Kom-igång guide](https://gitlab.com/arbetsformedlingen/education/education-api/-/blob/main/GETTING_STARTED.md)
+- Add a todo
+- Mark a todo as completed
+- Unmark a completed todo
+- Remove a todo (only when it’s completed)
+- Two example todos on app start (one completed, one active)
 
-## Prova att utforska datan med vår interaktiva tjänst 
+## Tech Stack
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 
-Görs genom att öppna Swagger-sidan för API:et (för att enkelt testa olika endpoints i API:et och läsa dokumentation för respektive endpoint): Search job ads (jobtechdev.se) 
+![ReactRouter](https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white)
 
-## Uppgift 
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 
-Använd endpoint https://jobsearch.api.jobtechdev.se/ för att använda/söka bland befintliga annonser. 
-Det går även bra att använda historiska annonser om ni vill jämföra aktuella annonser med hur det har sett ut tidigare. Detta api finns här: Historical job ads (jobtechdev.se)
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
 
-Om möjligt, använd en grafisk presentation av era resultat genom t.ex. stapeldiagram eller linjegrafer.
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 
-**Observera**
-Er slutprodukt ska ej innehålla Arbetsförmedlingens logga eller färger. Anpassa gärna efter eget tycke och smak så att ni har en färgpalett och en god tanke bakom. 
 
-## Betygskriterier 
+## Screenshots
 
-### Need-to-have (G) 
-- Ni har hämtat data på ett strukturerat sätt med hjälp av antingen fetch eller axios. 
-- Ni har skapat en tjänst som ni använder för att hämta data. 
-- Ni använder react-koncept vi har pratat om för att göra datan tillgänglig (context, state, routing et.c.). 
-- Ni använder den syntax, namngivningsstandard samt skrivsätt som vi har lärt er.  
-- Ni använder designsystemet för presentation. 
 
-### Nice-to-have (Extra bonus) 
-- Styled components (som drar nytta av designsystemet) 
-- Grafisk presentation av datat 
-- Användning av custom hook där det finns möjlighet
+
+## Installation
+
+```shell
+  npm install
+  npm run dev
+
+```
+## Authors
+
+- [@ynnxj](https://github.com/ynnxj)
+- [@KarinHson](https://github.com/KarinHson)
+- [@skogblad](https://www.github.com/skogblad)
+    
