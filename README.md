@@ -2,14 +2,6 @@
 
 JobMatch is a React web application that lets users browse and search job ads using the JobTech API from Arbetsförmedlingen. The app displays both current and historical job postings, with the option to filter and explore different listings. Data is fetched through a dedicated service built with fetch, and the UI is styled using Arbetsförmedlingen’s design system for consistent and accessible presentation. On top of this, a custom color palette were applied to create a unique visual identity for the project, independent of Arbetsförmedlingen’s branding.
 
-## Features
-
-- Add a todo
-- Mark a todo as completed
-- Unmark a completed todo
-- Remove a todo (only when it’s completed)
-- Two example todos on app start (one completed, one active)
-
 ## Tech Stack
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
